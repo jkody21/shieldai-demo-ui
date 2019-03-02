@@ -1,0 +1,69 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+          Flight Log
+      </div>
+      <div class="card-body">
+        <div class="row">
+            <div class="col-lg-12" *ngIf="flightLog$ | async as flightLog; else loading">
+
+
+<table class="table table-responsive-sm table-hover table-outline mb-0">
+  <thead class="thead-light">
+    <tr>
+      <th>Log Id</th>
+      <th>Drone Id</th>
+      <th>Generation</th>
+      <th>Begin</th>
+      <th>End</th>
+      <th>Longitude</th>
+      <th>Latitude</th>
+      <th>Map</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let f of flightLog">
+      <td class="text-center">
+        {{ f.flightLogId }}
+      </td>
+      <td>
+        {{ f.droneId}}
+      </td>
+      <td class="text-center">
+        {{ f.droneGeneration }}
+      </td>
+      <td>
+        {{ f.beginOn | date : 'medium' }}
+      </td>
+      <td class="text-center">
+        {{ f.endOn | date : 'medium' }}
+      </td>
+      <td>
+        {{ f.longitude }}
+      </td>
+      <td>
+        {{ f.latitude }}
+      </td>
+      <td>
+        {{ f.mapPath }}
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<ng-template #loading>
+    <div class="container-fluid text-center">
+      <h4 class="text-center">Loading Flight Log</h4>
+      <img src="../../../assets/img/loading-shieldai.gif" alt="Loading..." class="center-block img-responsive" />
+    </div>
+</ng-template>

@@ -1,0 +1,115 @@
+
+
+<form [formGroup]="flightForm" (ngSubmit)="addFlight()" novalidate>
+<div class="row">
+  <div class="col-sm-8">
+    <div class="card">
+      <div class="card-header">
+        <strong>Flight Log</strong>&nbsp;
+        <small>Add a Flight</small>
+      </div>
+      <div class="card-body">
+        <div class="row">
+        <div class="form-group col-sm-6">
+          <label for="droneId">Drone Id</label>
+          <input  type="number" 
+                  class="form-control" 
+                  id="droneId" 
+                  formControlName="droneId" 
+                  placeholder="Enter the Drone Id" 
+                  [ngClass]="{'is-invalid': flightForm.controls['droneId'].invalid && (flightForm.controls['droneId'].dirty || flightForm.controls['droneId'].touched) }">
+          <div class="invalid-feedback">
+              Please provide a valid drone Id.
+          </div>
+        </div>
+        
+        <div class="form-group col-sm-6">
+          <label for="droneGeneration">Drone Generation</label>
+          <input  type="number" 
+                  class="form-control" 
+                  id="droneGeneration" 
+                  formControlName="droneGeneration" 
+                  placeholder="Enter the Drone Generation"
+                  [ngClass]="{'is-invalid': flightForm.controls['droneGeneration'].invalid && (flightForm.controls['droneGeneration'].dirty || flightForm.controls['droneGeneration'].touched) }">
+          <div class="invalid-feedback">
+              Please provide a valid drone generation.
+          </div>
+        </div>
+      </div>
+        <div class="row">
+        <div class="form-group col-sm-6">
+          <label for="beginOn">Begin</label>
+          <input  type="date" 
+                  class="form-control" 
+                  id="beginOn" 
+                  formControlName="beginOn" 
+                  placeholder="Flight Begin Date" 
+                  [ngClass]="{'is-invalid': flightForm.controls['beginOn'].invalid && (flightForm.controls['beginOn'].dirty || flightForm.controls['beginOn'].touched) }">
+          <div class="invalid-feedback">
+              Please provide a flight begin date.
+          </div>
+        </div>
+        <div class="form-group col-sm-6">
+          <label for="endOn">End</label>
+          <input  type="date" 
+                  class="form-control" 
+                  id="endOn" 
+                  formControlName="endOn" 
+                  placeholder="Flight End Date" 
+                  [ngClass]="{'is-invalid': flightForm.controls['endOn'].invalid && (flightForm.controls['endOn'].dirty || flightForm.controls['endOn'].touched) }">
+          <div class="invalid-feedback">
+              Please provide a flight end date.
+          </div>
+
+        </div>
+      </div>
+        <div class="row">
+          <div class="form-group col-sm-6">
+            <label for="longitude">Longitude</label>
+            <input  type="text" 
+                    class="form-control" 
+                    id="longitude" 
+                    formControlName="longitude" 
+                    placeholder="Longitude" 
+                    [ngClass]="{'is-invalid': flightForm.controls['longitude'].invalid && (flightForm.controls['longitude'].dirty || flightForm.controls['longitude'].touched) }">
+            <div class="invalid-feedback">
+                Please provide a valid longitude.
+            </div>
+          </div>
+          <div class="form-group col-sm-6">
+            <label for="latitude">Latitude</label>
+            <input  type="text" 
+                    class="form-control" 
+                    id="latitude" 
+                    formControlName="latitude" 
+                    placeholder="Latitude" 
+                    [ngClass]="{'is-invalid': flightForm.controls['latitude'].invalid && (flightForm.controls['latitude'].dirty || flightForm.controls['latitude'].touched) }">
+            <div class="invalid-feedback">
+                Please provide a valid latitude.
+            </div>
+          </div>
+        </div><!--/.row-->
+        <div class="form-group">
+          <label for="mapPath">Map Path</label>
+          <input type="text" class="form-control" id="mapPath" formControlName="mapPath" placeholder="Url for the flight map">
+        </div>
+        
+      </div>
+      <div class="card-footer">
+        <button   type="submit"  
+                  [disabled]="!flightForm.valid" 
+                  class="btn btn-sm btn-primary"
+                  [ngClass]="{'disabled': !flightForm.valid }">
+          <i class="fa fa-dot-circle-o"></i> 
+          Submit
+        </button>
+        &nbsp;
+        <button type="reset" class="btn btn-sm btn-danger">
+          <i class="fa fa-ban"></i> 
+          Reset
+        </button>
+      </div>
+    </div>
+  </div><!--/.col-->
+  </div>
+</form>
