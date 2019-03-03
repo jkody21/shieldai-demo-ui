@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  serviceBase: "http://shieldai-api.jeffkody.com/"
 };

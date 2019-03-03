@@ -3,17 +3,19 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { FlightLog } from '../models/flight-log';
 import { Observable, throwError as observableThrowError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FlightlogService {
+  private env = environment;
+  private flightLogUrl = this.env.serviceBase + "flightlog";
 
   constructor(
     private http: HttpClient
   ) { }
 
-  private flightLogUrl = "http://shieldai-api.jeffkody.com/flightlog";
 
   
   findFlightLogs(request: any) : Observable<FlightLog[]> {
@@ -48,7 +50,7 @@ export class FlightlogService {
 
 
   bulkAddFlights(logs: FlightLog[]) : Observable<any> {
-    var url = "http://shieldai-api.jeffkody.com/flightlog/bulk-entry";
+    var url = this.env.serviceBase + "flightlog/bulk-entry";
 
     return this.http
       .post<FlightLog>(url, logs)

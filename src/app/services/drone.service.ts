@@ -3,12 +3,14 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Drone } from '../models/drone';
 import { Observable, throwError as observableThrowError } from 'rxjs';
 import { map, catchError, filter } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DroneService {
-  private droneUrl = "http://shieldai-api.jeffkody.com/drone";
+  private env = environment;
+  private droneUrl = this.env.serviceBase + "drone";
 
   constructor(
     private http : HttpClient
