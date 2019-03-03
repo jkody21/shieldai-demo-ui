@@ -4,6 +4,7 @@ import { FlightLog } from '../models/flight-log';
 import { Observable, throwError as observableThrowError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
+import { FlightMetrics } from '../models/flight-metrics';
 
 @Injectable({
   providedIn: 'root'
@@ -73,6 +74,17 @@ export class FlightlogService {
     var array = JSON.parse(logs);
 
     return this.bulkAddFlights(array);
+  }
+
+  getFlightMetrics() : Observable<FlightMetrics> {
+    var url = this.env.serviceBase + "flightlog/metrics";
+
+    return this.http
+      .get<FlightMetrics>(url)
+      .pipe(
+          map(data => data), 
+          catchError(this.handleError)
+      );
   }
 
   
