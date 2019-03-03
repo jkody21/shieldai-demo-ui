@@ -12,25 +12,19 @@
 <table class="table table-responsive-sm table-hover table-outline mb-0">
   <thead class="thead-light">
     <tr>
-      <th>Log Id</th>
       <th>Drone Id</th>
-      <th>Generation</th>
+      <th class="text-center">Generation</th>
       <th>Begin</th>
       <th>End</th>
-      <th>Longitude</th>
-      <th>Latitude</th>
-      <th>Map</th>
+      <th class="text-center">Details</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let f of flightLog">
       <td>
-        {{ f.flightLogId }}
-      </td>
-      <td>
         {{ f.droneId}}
       </td>
-      <td>
+      <td class="text-center">
         {{ f.droneGeneration }}
       </td>
       <td>
@@ -39,17 +33,10 @@
       <td>
         {{ f.endOn | date : 'medium' }}
       </td>
-      <td>
-        {{ f.longitude }}
-      </td>
-      <td>
-        {{ f.latitude }}
-      </td>
-      <td>
-        {{ f.mapPath }}
-
-        <!--<img src="{{ buildMapUrl(f.longitude, f.latitude, 100, 100) }}" />-->
-        <!--<img src="f.mapPath" />-->
+      <td class="text-center">
+        <a (click)="showModal('Modal', f)" class="action">
+          <i class="fa fa-binoculars fa-lg" style="color: #20a8d8"></i>
+        </a>
       </td>
     </tr>
   </tbody>

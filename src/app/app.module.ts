@@ -37,6 +37,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { FlightLogComponent } from './views/flight-log/flight-log.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 import { HttpClientModule } from '@angular/common/http';
 import { AddFlightComponent } from './views/flight-log/add-flight.component';
 import { BulkFlightComponent } from './views/flight-log/bulk-flight.component';
@@ -44,6 +45,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DroneComponent } from './views/drone/drone.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ModalContentComponent } from './containers/default-layout/modal.component';
  
 import { ToastrModule } from 'ngx-toastr';
 
@@ -62,6 +64,7 @@ import { ToastrModule } from 'ngx-toastr';
     PerfectScrollbarModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
+    ModalModule.forRoot(),
     ChartsModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot({
@@ -77,12 +80,14 @@ import { ToastrModule } from 'ngx-toastr';
     DroneComponent,
     AddFlightComponent,
     BulkFlightComponent,
+    ModalContentComponent,
     DroneComponent
   ],
   providers: [{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
   }],
-  bootstrap: [ AppComponent ]
+  bootstrap: [ AppComponent ],
+  entryComponents: [ ModalContentComponent ]
 })
 export class AppModule { }

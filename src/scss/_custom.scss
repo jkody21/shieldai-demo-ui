@@ -2,3 +2,29 @@
 button:disabled {
     cursor: not-allowed;
 }
+
+.action {
+    cursor: pointer;
+}
+
+
+div.flight-display {
+    div {
+        padding: 2px 10px;
+    }
+
+    img {
+        max-width: 300px;
+    }
+
+    .bold {
+        font-weight: bold !important;
+    }
+}
+
+.is-active {
+    color: #4dbd74;
+}
+.is-inactive {
+    color: #dddddd;
+}
