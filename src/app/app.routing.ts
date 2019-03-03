@@ -9,6 +9,7 @@ import { P500Component } from './views/error/500.component';
 import { FlightLogComponent } from './views/flight-log/flight-log.component';
 import { AddFlightComponent } from './views/flight-log/add-flight.component';
 import { BulkFlightComponent } from './views/flight-log/bulk-flight.component';
+import { DroneComponent } from './views/drone/drone.component';
 
 export const routes: Routes = [
   {
@@ -62,7 +63,14 @@ export const routes: Routes = [
         data: {
           title: 'Add Many Flights'
         }
-      }
+      },
+      {
+        path: 'drone',
+        component: DroneComponent,
+        data: {
+          title: 'View Drones'
+        }
+      },
     ]
   }
 ];

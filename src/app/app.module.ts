@@ -41,6 +41,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { AddFlightComponent } from './views/flight-log/add-flight.component';
 import { BulkFlightComponent } from './views/flight-log/bulk-flight.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DroneComponent } from './views/drone/drone.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+ 
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   imports: [
@@ -57,7 +62,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PerfectScrollbarModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
-    ChartsModule
+    ChartsModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot({
+      toastClass: 'toast toast-bootstrap-compatibility-fix'
+    }) // ToastrModule added
   ],
   declarations: [
     AppComponent,
@@ -65,8 +74,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     P404Component,
     P500Component,
     FlightLogComponent,
+    DroneComponent,
     AddFlightComponent,
-    BulkFlightComponent
+    BulkFlightComponent,
+    DroneComponent
   ],
   providers: [{
     provide: LocationStrategy,

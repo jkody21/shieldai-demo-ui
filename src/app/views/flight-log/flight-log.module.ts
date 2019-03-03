@@ -17,6 +17,6 @@ import { BulkFlightComponent } from './bulk-flight.component';
     BsDropdownModule,
     ButtonsModule.forRoot()
   ],
-  declarations: [ FlightLogComponent, AddFlightComponent, BulkFlightComponent ]
+  declarations: [ ]
 })
 export class FlightLogModule { }

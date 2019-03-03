@@ -1,1 +1,86 @@
+<div class="card">
+    <div class="card-header">
+        Bulk Upload
+    </div>
+    <div class="card-body">
 
+<div class="row" *ngIf="showSuccess">
+<div class="col-sm-8">
+    <div class="alert alert-success" role="alert">Flight log updated successfully!</div>
+</div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12 mb-4">
+    <tabset>
+        <tab>
+        <ng-template tabHeading><i class="icon-calculator"></i> Paste CSV</ng-template>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="alert alert-primary" role="alert">
+                    When uploading a CSV string, please include the field headers as the first row.
+
+                    <span class="pull-right">
+                        <button (click)="processCsv()"
+                            type="button"
+                            [disabled]="!csv"
+                            class="btn btn-sm btn-primary">Process CSV Import</button>
+                        &nbsp;
+                        <button (click)="showCsvHeaders()"
+                            type="button"
+                            [disabled]="csv"
+                            class="btn btn-sm btn-secondary">Show CSV Headers</button>
+                    </span>
+                </div>
+            </div>
+                 
+            </div>
+            <textarea 
+                style="width: 100%; height: 500px;"
+                id="textarea-input" 
+                name="textarea-input" 
+                class="form-control" 
+                [(ngModel)]="csv"
+                placeholder="Paste CSV here"></textarea>
+        </tab>
+        <tab>
+        <ng-template tabHeading><i class="icon-basket-loaded"></i> Paste JSON</ng-template>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="alert alert-primary" role="alert">
+                    When uploading a JSON string, please use the correct format.
+
+                    <span class="pull-right">
+                        <button (click)="processJson()"
+                            type="button"
+                            [disabled]="!json"
+                            class="btn btn-sm btn-primary">Process JSON Import</button>
+                        &nbsp;
+                        <button (click)="showJsonFormat()"
+                            type="button"
+                            [disabled]="json"
+                            class="btn btn-sm btn-secondary">Show JSON Format</button>
+                    </span>
+                </div>
+            </div>
+
+            </div>  
+            <textarea 
+                style="width: 100%; height: 500px;"
+                id="textarea-input" 
+                name="textarea-input" 
+                class="form-control" 
+                [(ngModel)]="json"
+                placeholder="Paste JSON here"></textarea>
+        </tab>
+    </tabset>
+    </div><!--/.col-->
+</div>
+    
+
+</div>
+    <div class="card-footer">
+
+    </div>
+</div>

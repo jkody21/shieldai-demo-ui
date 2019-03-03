@@ -16,7 +16,7 @@ export const navItems = [
     name: 'Flight Log'
   },
   {
-    name: 'Log',
+    name: 'Flight Log',
     url: '/flight-log',
     icon: 'icon-list'
   },
@@ -29,5 +29,10 @@ export const navItems = [
     name: 'Add Bulk Flights',
     url: '/flight-log/bulk-flight',
     icon: 'icon-cloud-upload'
+  },
+  {
+    name: 'Drone List',
+    url: '/drone',
+    icon: 'icon-shield'
   }
 ];

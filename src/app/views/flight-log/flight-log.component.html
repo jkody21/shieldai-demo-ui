@@ -6,7 +6,7 @@
       </div>
       <div class="card-body">
         <div class="row">
-            <div class="col-lg-12" *ngIf="flightLog$ | async as flightLog; else loading">
+            <div class="col-lg-9" *ngIf="flightLog$ | async as flightLog; else loading">
 
 
 <table class="table table-responsive-sm table-hover table-outline mb-0">
@@ -24,19 +24,19 @@
   </thead>
   <tbody>
     <tr *ngFor="let f of flightLog">
-      <td class="text-center">
+      <td>
         {{ f.flightLogId }}
       </td>
       <td>
         {{ f.droneId}}
       </td>
-      <td class="text-center">
+      <td>
         {{ f.droneGeneration }}
       </td>
       <td>
         {{ f.beginOn | date : 'medium' }}
       </td>
-      <td class="text-center">
+      <td>
         {{ f.endOn | date : 'medium' }}
       </td>
       <td>
@@ -47,11 +47,120 @@
       </td>
       <td>
         {{ f.mapPath }}
+
+        <!--<img src="{{ buildMapUrl(f.longitude, f.latitude, 100, 100) }}" />-->
+        <!--<img src="f.mapPath" />-->
       </td>
     </tr>
   </tbody>
 </table>
 
+            </div>
+            <div class="col-lg-3">
+                <div class="card">
+                    <div class="card-header">
+                        Filter Flights
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <select class="form-control" 
+                                    *ngIf="drones$ | async as drones"
+                                    id="droneId" 
+                                    [(ngModel)]="droneId"
+                                    placeholder="Drone Id">
+                              <option  *ngFor="let d of drones" value="{{d.droneId}}">{{d.name}} ({{d.droneId}})</option>
+                            </select>
+                          </div>
+
+                      <div class="form-group">
+                          <input  type="number" 
+                                  class="form-control" 
+                                  id="droneGeneration" 
+                                  [(ngModel)]="droneGeneration"
+                                  placeholder="Drone Generation">
+                        </div>
+
+                        <div class="form-group">
+                            <input  type="date" 
+                                    class="form-control" 
+                                    id="from" 
+                                    [(ngModel)]="from"
+                                    placeholder="Flight Began On">
+                          </div>
+
+                          <div class="form-group">
+                              <input  type="date" 
+                                      class="form-control" 
+                                      id="to" 
+                                      [(ngModel)]="to"
+                                      placeholder="Flight Ended On">
+                            </div>
+                    </div>
+                    <div class="card-header">
+                        Duration Filter<br />
+                        <small>Duration is in minutes</small>
+                    </div>
+                    <div class="card-body">
+                      <div class="row">
+                              <div class="form-group col-md-6">
+                                  <input  type="number" 
+                                          class="form-control" 
+                                          id="durationLow" 
+                                          [(ngModel)]="durationLow"
+                                          placeholder="Min">
+                              </div>
+                              <div class="form-group col-md-6">
+                                  <input  type="number" 
+                                          class="form-control" 
+                                          id="durationHigh" 
+                                          [(ngModel)]="durationHigh"
+                                          placeholder="Max">
+                                </div>
+                              </div>
+                            </div>
+                    <div class="card-header">
+                        Geo Filter<br />
+                        <small>All 3 geo fields are required for distance filtering to work</small>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <input  type="number" 
+                                    class="form-control" 
+                                    id="longitude" 
+                                    [(ngModel)]="longitude"
+                                    placeholder="Longitude">
+                          </div>
+                        <div class="form-group">
+                            <input  type="number" 
+                                    class="form-control" 
+                                    id="latitude" 
+                                    [(ngModel)]="latitude"
+                                    placeholder="Latitude">
+                          </div>
+                        <div class="form-group">
+                            <input  type="number" 
+                                    class="form-control" 
+                                    id="distance" 
+                                    [(ngModel)]="distance"
+                                    placeholder="Distance in Miles">
+                          </div>
+                    </div>
+                    <div class="card-footer">
+                        <button   type="button"
+                                  (click)="doFilter()"
+                                  class="btn btn-sm btn-primary">
+                          <i class="fa fa-filter"></i> 
+                          Filter Results
+                        </button>
+                        &nbsp;
+                        <button   type="button"
+                                  (click)="reset()"
+                                  class="btn btn-sm btn-warning">
+                          <i class="fa fa-filter"></i> 
+                          Reset Filters
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
       </div>
