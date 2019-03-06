@@ -107,6 +107,14 @@ export class FlightlogService {
         var obj = {};
         var currentline = lines[i].split(",");
 
+        //---empty line...skip
+        if(!currentline || currentline.length != 7) {
+          console.error("Line invalid.  Skipping to next line:")
+          console.error(currentline);
+          continue;
+        }
+
+
         for (var j = 0; j < headers.length; j++) {
           var h = headers[j];
 
